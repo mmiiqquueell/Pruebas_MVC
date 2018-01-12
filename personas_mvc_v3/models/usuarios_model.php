@@ -2,38 +2,46 @@
 
 class usuarios_model
 {
-    public function iniciarSesion()
-    {
-        session_start();
-        // $nombre = $_POST['usuario'];
-        //$password = $_POST['password'];
-        $sql = "SELECT * FROM usuarios WHERE user = '$nombre'";
-        // $resultado = $conectado->query($sql);
-		if ($resultado->num_rows > 0) {
-			$row = $resultado->fetch_assoc();
-			
-			if(($nombre == $row['user']) && ($passwd == $row['pass'])) {
-				header("Location: index.php");
-			}
-			else {
-				header("Location: index.php");
-			}
-		} else {
-			header("Location: index.php");
-		}
 
+    public function __construct(){
+        $this->db=Conectar::conexion();
     }
     
-    public function cerrarSesion()
-    {
-        session_start();
-        session_unset();
-        session_destroy();
-        header("Location: index.php");
+    public function getNombre() {
+      return $this->nombre;
+    }
+
+    public function setNombre($nombre) {
+      $this->nombre = $nombre;
+    }
+
+
+    public function getPassword() {
+      return $this->password;
+    }
+
+    public function setPassword($password) {
+      $this->password = $password;
     }
     
-    public function muestraLogin()
+    
+    
+    function login()
     {
-        header("Location: index.php");
+        $sql = "SELECT * FROM usuarios WHERE nombre = '{$this->nombre}' AND password = '{$this->password}'";
+		$resultado = $this->db->query($sql);
+var_dump($resultado); exit;
+		if ($resultado->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
+    
+    function logout()
+    {
+      
+    }
+    
+   
 }

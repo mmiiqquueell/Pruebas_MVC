@@ -48,13 +48,12 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
         }
         
     } elseif ($_GET['controller'] == "usuarios") {
-        
         if ($_GET['action'] == "login") {
             $controller = new usuarios_controller();
-            $controller->iniciarSesion();
+            $controller->login();
         } elseif ($_GET['action'] == "logout") {
             $controller = new usuarios_controller();
-            $controller->cerrarSesion();
+            $controller->logout();
         } elseif ($_GET['action'] == "muestraLogin") {
             $controller = new usuarios_controller();
             $controller->muestraLogin();

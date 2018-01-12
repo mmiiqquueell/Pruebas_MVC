@@ -9,17 +9,28 @@ class usuarios_controller
         require_once("views/pantalla_login.phtml");
     }
     
-    function iniciarSesion()
+    public function login()
     {
-        $usuarios=new usuarios_model();
-
-        $datos=$usuarios->iniciarSesion();
-
-        require_once("views/pantalla_login.phtml");
+        $nombre = $_POST['nombre'];
+		$password = $_POST['password'];
+        
+        $new_user = new usuarios_model();  
+        
+        $new_user -> setNombre($nombre);
+        $new_user -> setPassword($password);
+        
+        $usuarioExiste = $new_user->login();
+        
+        if($usuarioExiste) {header ("Location: index.php?controller=personas&action=view");}
+        else {header ("Location: index.php?error=1");}
     }
     
-    function cerrarSesion()
+    public function logout()
     {
-        require_once("views/index.php");
+        session_start();
+        session_unset();
+        session_destroy();
+        header ("Location: index.php");
     }
+    
 }

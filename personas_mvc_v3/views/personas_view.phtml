@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Personas</title>
-    </head>
-    <body>
-      <h1>PERSONAS</h1>
-        <a href="index.php?controller=personas&action=ordenar_nombre">Nombre</a> 
-        <a href="index.php?controller=personas&action=ordenar_edad">Edad</a><br>
-        <?php
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Personas</title>
+</head>
+
+<body>
+    <h1>PERSONAS</h1>
+    <a href="index.php?controller=personas&action=ordenar_nombre">Nombre</a>
+    <a href="index.php?controller=personas&action=ordenar_edad">Edad</a><br>
+    <?php
         foreach ($datos as $dato) {
             echo "{$dato['nombre']} tiene {$dato['edad']} años." .
             "<a href=\"index.php?controller=personas&action=delete&id={$dato['id']}\">Borrar</a><br/>";
         }
-        ?>
+     ?>
         <p><a href="index.php?controller=personas&action=add">Alta de Personas</a></p>
         <p><a href="index.php?controller=coches&action=view">Ver Coches <a/></p>
-            
-            
-            
-            
+                        
         <p><a href="index.php?controller=usuario&action=logout">Cerrar Sesion</a></p>
-    </body>
+</body>
+
 </html>

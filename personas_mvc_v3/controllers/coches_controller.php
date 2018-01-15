@@ -4,15 +4,11 @@ require_once("models/coches_model.php");
 
 
 class coches_controller {
-
   /**
    * Muestra pantalla 'add'
    * @return No
    */
-  function add() {
-    require_once("views/coches_add.phtml");
-  }
-
+  function add() {require_once("views/coches_add.phtml");}
 
 /**
  * Mostra llistat
@@ -40,18 +36,12 @@ class coches_controller {
           $coche->setMarca ($_POST['marca']);
           $coche->setModelo ($_POST['modelo']);
           $coche->setFabricado ($_POST['fabricado']);
-
           $error = $coche->insertar();
 
-          if (!$error) {
-              header( "Location: index.php?controller=coches&action=view");
-          }
-          else {
-              echo $error;
-          }
+          if (!$error) {header( "Location: index.php?controller=coches&action=view");}
+          else {echo $error;}
       }
   }
-
 
 /**
  * Elimina una fila de la taula
@@ -60,20 +50,13 @@ class coches_controller {
   function delete() {
     if (isset($_GET['id'])) {
       $coche=new coches_model();
-
       $id = $_GET['id'];
-
       $error = $coche->delete($id);
 
-      if (!$error) {
-        header( "Location: index.php?controller=coches&action=view");
-      }
-      else {
-          echo $error;
-      }
+      if (!$error) {header( "Location: index.php?controller=coches&action=view");}
+      else {echo $error;}
     }
   }
-
 
 /**
  * Mostra els cotxes ordenats per marca
@@ -88,6 +71,5 @@ class coches_controller {
     //Llamado a la vista: mostrar la pantalla
     require_once("views/coches_view.phtml");
   }
-
 }
 ?>

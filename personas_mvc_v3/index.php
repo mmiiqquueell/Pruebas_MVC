@@ -8,53 +8,48 @@ require_once("controllers/usuarios_controller.php");
 if (isset($_GET['controller']) && isset($_GET['action'])) {
 
     if ($_GET['controller'] == "personas") {
+        
+        $controller = new personas_controller();
+        
         if ($_GET['action'] == "view") {
-            $controller = new personas_controller();
             $controller -> view();
         } elseif ($_GET['action'] == "add") {
-            $controller = new personas_controller();
             $controller -> add();
         } elseif ($_GET['action'] == "insert") {
-            $controller = new personas_controller();
             $controller -> insert();
         } elseif ($_GET['action'] == "delete") {
-            $controller = new personas_controller();
             $controller -> delete();
         } elseif ($_GET['action'] == "ordenar_nombre") {
-            $controller = new personas_controller();
             $controller -> ordenar_nombre();
         } elseif ($_GET['action'] == "ordenar_edad") {
-            $controller = new personas_controller();
             $controller -> ordenar_edad();
         }
         
     } elseif ($_GET['controller'] == "coches") {
+        
+        $controller = new coches_controller();
+        
         if ($_GET['action'] == "view") {
-            $controller = new coches_controller();
             $controller -> view();
         } elseif ($_GET['action'] == "add") {
-            $controller = new coches_controller();
             $controller -> add();
         } elseif ($_GET['action'] == "insert") {
-            $controller = new coches_controller();
             $controller -> insert();
         } elseif ($_GET['action'] == "delete") {
-            $controller = new coches_controller();
             $controller -> delete();
         } elseif ($_GET['action'] == "ordmarca") {
-            $controller = new coches_controller();
             $controller -> ordmarca();
         }
         
     } elseif ($_GET['controller'] == "usuarios") {
+       
+        $controller = new usuarios_controller();
+        
         if ($_GET['action'] == "login") {
-            $controller = new usuarios_controller();
             $controller -> login();
         } elseif ($_GET['action'] == "logout") {
-            $controller = new usuarios_controller();
             $controller -> logout();
         } elseif ($_GET['action'] == "muestraLogin") {
-            $controller = new usuarios_controller();
             $controller -> muestraLogin();
         }
     }

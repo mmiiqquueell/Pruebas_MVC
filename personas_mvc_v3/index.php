@@ -53,7 +53,6 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
             $controller -> muestraLogin();
         }
     }
-
 } else {
     $controller = new usuarios_controller();
     $controller -> muestraLogin();

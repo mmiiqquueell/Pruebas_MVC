@@ -12,15 +12,16 @@ class usuarios_controller{
         $new_user -> setNombre($nombre);
         $new_user -> setPassword($password);
         $usuarioExiste = $new_user -> login();
+ 
         if($usuarioExiste) {header ("Location: index.php?controller=personas&action=view");} 
-        else {header ("Location: index.php");}
+        else {header ("Location: index.php?controller=usuarios&action=muestraLogin");}
     }
     
     public function logout(){
         session_start();
         session_unset();
         session_destroy();
-        header ("Location: index.php");
+        header ("Location: index.php?controller=usuarios&action=muestraLogin");
     }
     
 }

@@ -16,5 +16,4 @@ class usuarios_model
         else {return false;}
     }
     
-    function logout(){}
 }
